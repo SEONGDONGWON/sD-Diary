@@ -1,0 +1,29 @@
+<!doctype html>
+  <html>
+    <head>
+        <meta charset="utf-8">
+        <title>부자되기 프로젝트</title>
+        <style>
+        .o
+        {
+            text-align : center;
+        }
+        </style>
+        <link rel="stylesheet" href="rich.css">
+    </head>
+    <body>
+
+          <br><br>
+
+          <br><br>
+          <div class="o">
+            <h2>나는 누구인가</h2>
+              이름 : sD<br><br>
+              나이 : 29 (2019.1.2) 기준<br><br>
+              성별 : 남자<br><br>
+              메일 : ehddnjs403@naver.com<br><br>
+              취미 : 코딩, 볼링, 컴퓨터게임, 술먹기, 춤추기, 영화보기, 독서<br><br>
+              직업 : 백수<br><br>
+          </div>
+    </body>
+  </html>

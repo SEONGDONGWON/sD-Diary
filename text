@@ -1,0 +1,130 @@
+<!doctype html>
+  <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=ko">
+        <title>부자되기 프로젝트</title>
+        <style>
+        .o
+        {
+            text-align : center;
+            margin-left : 100px;
+            margin-right : 100px;
+            letter-spacing : 2px;
+            line-height : 150%
+        }
+
+          #chartcanvas {
+            margin-top : 0px;
+            margin-left : auto;
+            margin-right : auto;
+            margin-bottom : 0px;
+            border : 1px solid red;
+            padding : 0;
+          }
+
+        </style>
+        <link rel="stylesheet" href="rich.css">
+    </head>
+    <body>
+
+          <br><br>
+
+          <div class="o">
+            <canvas id ="chartcanvas" width="550" height="400"></canvas>
+            <script type="text/javascript">
+                window.onload=function(){
+                  var canvas = document.getElementById("chartcanvas");
+                  var context = canvas.getContext("2d");
+                  var sw = canvas.width;
+                  var sh = canvas.height;
+
+                  var sell_count = [27, 35, 32, 41, 32, 49, 48, 40, 41, 42];
+                  var barwidth = 40;
+                  var barheight;
+                  var xcoord = 40;
+                  var base = 90;
+
+                  for(var i = 0; i < sell_count.length; i++)
+                  {
+                    barheight=sell_count[i];
+                    DrawBarchart(context, "blue", xcoord, (sh-barheight)-base, barwidth, barheight);
+                    xcoord += barwidth+10;
+                  }
+
+                  //직사각형(Rectangle)을 그리는 함수
+                  function DrawBarchart(context, fillstyleColor, xcoord, ycoord, width, height){
+                    context.fillStyle = fillstyleColor;
+                    context.fillRect(xcoord,ycoord,width,height);
+                  }
+
+                  //타이틀 나타내기 및 그림자 효과 주기
+                  var strMessage = "정처기 자격증 필기 회차별 점수";
+                  context.textAlign = "center";
+                  context.fillStyle = "black";
+                  context.shadowColor = "rgba(0,0,0,0,5)";
+                  context.shadowOffsetX = 1;
+                  context.shadowOffsetY = 1;
+                  context.shadowBlur = 3;
+                  context.font = "16pt Century Gothic";
+                  context.fillText(strMessage, sw/2, 60);
+
+                  //x,y좌표 라인 표시하기
+                  var LINE_PADDING = 30;
+                  context.moveTo(LINE_PADDING, LINE_PADDING);
+                  context.lineTo(LINE_PADDING, sh-LINE_PADDING*3);
+                  context.lineTo(sw-LINE_PADDING, sh-LINE_PADDING*3);
+
+                  var stepSize = 10; //y좌표의 판매 대수를 위한 단위표시
+                  context.font = "12pt Century Gothic";
+                  for(var i = 0; i < 10; i++){
+                    context.moveTo(LINE_PADDING, LINE_PADDING+i*stepSize);
+                    if(i==0){
+                      context.lineTo(LINE_PADDING * 0.5, LINE_PADDING + i * stepSize);
+                      context.fillText(100-(i*10), LINE_PADDING * 0.5, LINE_PADDING + i * stepSize + 8);
+
+                    }
+                    /*else if(i==5){
+                      context.lineTo(LINE_PADDING * 0.5, LINE_PADDING + i * stepSize);
+                      context.fillText(100-(i*10), LINE_PADDING * 0.5, LINE_PADDING + i * stepSize + 8);
+
+                    }
+                    else if(i==13){
+                      context.lineTo(LINE_PADDING * 0.5, LINE_PADDING + i * stepSize);
+                      context.fillText(100-(i*10), LINE_PADDING * 0.5, LINE_PADDING + i * stepSize + 8);
+                    }*/
+                  }
+                  context.stroke();
+
+                  //해당 월 나타내기
+                  var text_xcoord = 70;
+                  var sell_month = ["1회", "2회", "3회", "4회", "5회", "6회", "7회", "8회", "9회", "10회"];
+                  for(var i = 0; i < sell_month.length; i++){
+                    AddMonthText(context,sell_month[i], text_xcoord, (sh-barheight)-(base/3));
+                    text_xcoord += barwidth + 10;
+                  }
+
+                  function AddMonthText(context, strMonth, text_xcoord, text_ycoord){
+                    context.textAlign = "center";
+                    context.fillStyle = "red";
+                    context.font = "12pt Century Gothic";
+                    context.fillText(strMonth, text_xcoord, text_ycoord);
+                  }
+
+                }
+                </script>
+                <br>
+                <br>
+                현재 정보처리기사 자격증 필기시험을 공부중에 있다. 다가오는 2019년 3월 3일에 실시하는 정보처리기사 필기시험 등록을 마친상태이며,
+                CBT 사이트에서 무료로 제공하는 정처기의 시험문제를 풀고 있다. 이쪽관련 개념이 아얘없다 보니, 맨땅에 헤딩느낌으로 시작하여 공부하고있다.
+                다행히 문제은행식이라 하여, 틀리면서 계속 다시보고 외우고 하면서 그나마 조금이라도 이렇게 올렸다.... 지금 차트는 완성되지 않았어서,
+                수치(bar)의 높이가 제대로 나오지 않아서 다 낮은 점수인 것 같지만, 낮은점수는 맞지만 저정도는 아니다...
+                지금 코드 이해가 잘안되는 부분이 있어서 제 작동을 하지 않는 것일뿐!!!
+                아무튼 내가 공부하면서 점수를 다 가지고 있는데 (스스로 점수가 올라가면 혼자 뿌듯해함을 느끼기 위함) 이걸 JAVAScript를 이용해서 통계를
+                만들어 보는 것도 재미 있겠다 싶어서 갑작스럽게 검색해보고 찾아본 후 이렇게 만들어 보았다. 아직 허접하고 부족하지만은
+                생각 났을때 바로 실전하는 습관을 들이는 것이 좋겠다 싶어서 바로 해보았다. ㅎㅎ
+
+          </div>
+
+    </body>
+  </html>

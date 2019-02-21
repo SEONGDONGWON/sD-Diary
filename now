@@ -1,0 +1,34 @@
+<!doctype html>
+  <html>
+    <head>
+        <meta charset="utf-8">
+        <title>부자되기 프로젝트</title>
+        <style>
+        .o
+        {
+            text-align : center;
+            margin-left : 100px;
+            margin-right : 100px;
+            letter-spacing : 2px;
+            line-height : 150%
+        }
+        </style>
+        <link rel="stylesheet" href="rich.css">
+    </head>
+    <body>
+
+          <br><br>
+
+          <div class="o">
+                <h2>웹을 위해서</h2>
+                <h3>2019년 1월 12일</h3>
+                웹을 어느정도 작성하였으니 최대한 CSS 와 JAVASCRIPT를 통해서 웹을 꾸며야 겠다.
+                너무 허접스럽네 ㅋㅋ내가봐도 ㅎㅎ
+
+
+
+
+
+          </div>
+    </body>
+  </html>
